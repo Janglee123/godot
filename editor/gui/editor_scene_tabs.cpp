@@ -64,6 +64,9 @@ void EditorSceneTabs::_notification(int p_what) {
 				scene_tabs->set_tab_close_display_policy((TabBar::CloseButtonDisplayPolicy)EDITOR_GET("interface/scene_tabs/display_close_button").operator int());
 				scene_tabs->set_max_tab_width(int(EDITOR_GET("interface/scene_tabs/maximum_width")) * EDSCALE);
 				_scene_tabs_resized();
+
+				bool is_visible_setting = bool(EDITOR_GET("interface/scene_tabs/show"));
+				set_visible(is_visible_setting);
 			}
 		} break;
 	}
@@ -439,4 +442,7 @@ EditorSceneTabs::EditorSceneTabs() {
 	tab_preview->set_size(Size2(96, 96) * EDSCALE);
 	tab_preview->set_position(Point2(2, 2) * EDSCALE);
 	tab_preview_panel->add_child(tab_preview);
+
+	bool is_visible_setting = bool(EDITOR_GET("interface/scene_tabs/show"));
+	set_visible(is_visible_setting);
 }
